@@ -54,7 +54,10 @@ export default function Skills() {
   ];
 
   const backendSkills: Skill[] = [
-    { name: "Java", img: "https://cdn.worldvectorlogo.com/logos/java-4.svg" },
+    {
+      name: "Java",
+      img: "https://cdn.worldvectorlogo.com/logos/java-4.svg",
+    },
     {
       name: "PHP",
       img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png",
@@ -66,20 +69,28 @@ export default function Skills() {
   ];
 
   const SkillGrid = ({ title, skills }: SkillGridProps) => (
-    <div className="mb-12">
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">{title}</h3>
+    <div className="mb-14">
+      <h3 className="text-2xl font-bold text-gray-800 mb-6 dark:text-gray-100">
+        {title}
+      </h3>
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col items-center hover:shadow-xl hover:scale-105 transition-transform duration-200"
+            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
           >
-            <img
-              src={skill.img}
-              alt={skill.name}
-              className="w-16 h-16 object-contain mb-4"
-            />
-            <p className="text-gray-800 font-semibold mb-2">{skill.name}</p>
+            <div className="w-20 h-20 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 p-3 dark:bg-slate-800">
+              <img
+                src={skill.img}
+                alt={skill.name}
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <p className="text-gray-800 font-semibold mb-2 dark:text-gray-100">
+              {skill.name}
+            </p>
           </div>
         ))}
       </div>
@@ -89,11 +100,20 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 px-6 bg-gray-50 text-center transition-all duration-300"
+      className="py-16 px-6 bg-gray-50 text-center transition-colors duration-300 dark:bg-slate-950"
     >
-      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10">
+      <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
+        Tecnologías
+      </span>
+
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4 dark:text-white">
         Habilidades
       </h2>
+
+      <p className="text-gray-600 max-w-2xl mx-auto mb-12 dark:text-gray-300">
+        Tecnologías y herramientas con las que he trabajado en desarrollo web,
+        backend, bases de datos y aplicaciones.
+      </p>
 
       <div className="max-w-6xl mx-auto">
         <SkillGrid title="Back-end" skills={backendSkills} />
