@@ -4,9 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-
 export default function Hero() {
-    const [showAbout, setShowAbout] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   return (
     <section
       id="inicio"
@@ -33,36 +32,36 @@ export default function Hero() {
             width={360}
             height={360}
             className="rounded-full shadow-lg object-cover border-4"
+            unoptimized
           />
         </motion.div>
 
         {/* Presentación */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-1 tracking-tight">
-            Diego&nbsp;Alejandro&nbsp;Ceron
+          Diego&nbsp;Alejandro&nbsp;Ceron
         </h2>
         <h5 className="text-xs md:text-sm text-gray-500 font-light">
-            Desarrollador&nbsp;Junior&nbsp;Back&nbsp;End
+          Desarrollador&nbsp;Junior&nbsp;Back&nbsp;End
         </h5>
 
-     <br />
-      {/* Botón dinámico */}
-      <button
-        onClick={() => setShowAbout(!showAbout)}
-        className="px-6 py-2 border-2 border-red-800 text-red-800 font-semibold rounded-lg hover:bg-red-800 hover:text-white transition-all duration-300 ease-in-out"
+        <br />
+        {/* Botón dinámico */}
+        <button
+          onClick={() => setShowAbout(!showAbout)}
+          className="px-6 py-2 border-2 border-red-800 text-red-800 font-semibold rounded-lg hover:bg-red-800 hover:text-white transition-all duration-300 ease-in-out"
         >
-        {showAbout ? "Ver menos" : "Sobre mí"}
-      </button>
+          {showAbout ? "Ver menos" : "Sobre mí"}
+        </button>
 
-      {/* Contenido dinámico */}
-      {showAbout && (
-        <div className="mt-6 max-w-2xl animate-fadeIn">
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Desarrollador Back End autodidacta, Ingeniero en Sistemas graduado de la Universidad Tecnologica de El Salvador
-          </p>
-        </div>
-      )}
-
-        
+        {/* Contenido dinámico */}
+        {showAbout && (
+          <div className="mt-6 max-w-2xl animate-fadeIn">
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Desarrollador Back End autodidacta, Ingeniero en Sistemas graduado
+              de la Universidad Tecnologica de El Salvador
+            </p>
+          </div>
+        )}
       </motion.div>
     </section>
   );

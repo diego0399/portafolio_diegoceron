@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 type Skill = {
   name: string;
   img: string;
@@ -28,7 +30,7 @@ export default function Skills() {
     },
     {
       name: "TypeScript",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/330px-Typescript_logo_2020.svg.png",
     },
   ];
 
@@ -43,7 +45,7 @@ export default function Skills() {
     },
     {
       name: "ORACLE",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/2560px-Oracle_logo.svg.png",
+      img: "https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png",
     },
     {
       name: "Firebase",
@@ -55,7 +57,7 @@ export default function Skills() {
     { name: "Java", img: "https://cdn.worldvectorlogo.com/logos/java-4.svg" },
     {
       name: "PHP",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png",
     },
     {
       name: "C Sharp",
