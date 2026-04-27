@@ -13,6 +13,10 @@ import {
   FaGithub,
   FaExternalLinkAlt,
   FaTimes,
+  FaPython,
+  FaReact,
+  FaServer,
+  FaRobot,
 } from "react-icons/fa";
 
 import {
@@ -35,7 +39,11 @@ type Tech =
   | "Spring Boot"
   | "SwiftUI"
   | "Swift"
-  | "Firebase";
+  | "Firebase"
+  | "Python"
+  | "React Native"
+  | "Hugging Face"
+  | "API REST";
 
 const techIcons: Record<Tech, ReactNode> = {
   PHP: <FaPhp className="text-indigo-600 text-lg" />,
@@ -50,6 +58,10 @@ const techIcons: Record<Tech, ReactNode> = {
   SwiftUI: <FaApple className="text-gray-900 dark:text-white text-lg" />,
   Swift: <SiSwift className="text-orange-500 text-lg" />,
   Firebase: <SiFirebase className="text-yellow-500 text-lg" />,
+  Python: <FaPython className="text-blue-500 text-lg" />,
+  "React Native": <FaReact className="text-cyan-500 text-lg" />,
+  "Hugging Face": <FaRobot className="text-yellow-500 text-lg" />,
+  "API REST": <FaServer className="text-green-600 text-lg" />,
 };
 
 interface Project {
@@ -251,6 +263,53 @@ const projects: Project[] = [
       "/images/Proyectos/educhat/principal2.png",
       "/images/Proyectos/educhat/principal3.png",
       "/images/Proyectos/educhat/principal4.png",
+    ],
+  },
+
+  {
+    title: "Aplicación Móvil de Interpretación Coloquial Salvadoreña",
+
+    description:
+      "Aplicación móvil desarrollada para interpretar expresiones coloquiales de El Salvador al inglés estadounidense y viceversa, utilizando un modelo preentrenado de Hugging Face consumido mediante una API en Python.",
+
+    longDescription:
+      "Aplicación móvil desarrollada con React Native que funciona como un intérprete de lenguaje coloquial salvadoreño. El sistema permite ingresar frases en español de El Salvador para obtener una interpretación al inglés estadounidense, y también interpretar frases del inglés estadounidense al español usado en El Salvador. Para el procesamiento del lenguaje se utilizó un modelo preentrenado de Hugging Face, integrado mediante una API desarrollada en Python.",
+
+    problem:
+      "Muchas expresiones coloquiales de El Salvador no se traducen correctamente con traductores convencionales, ya que suelen depender del contexto cultural, modismos y formas de hablar propias del país. Esto puede dificultar la comunicación entre personas salvadoreñas y hablantes de inglés estadounidense.",
+
+    solution:
+      "Se desarrolló una aplicación móvil en React Native que consume una API REST creada con Python. Esta API se encarga de procesar las frases utilizando un modelo preentrenado de Hugging Face para interpretar el lenguaje coloquial salvadoreño al inglés estadounidense y viceversa.",
+
+    impact:
+      "La aplicación permite acercar el lenguaje cotidiano salvadoreño a usuarios que necesitan comprender expresiones locales, ofreciendo una solución práctica para interpretar frases coloquiales con un enfoque cultural más específico.",
+
+    learned:
+      "En este proyecto reforcé mis conocimientos en desarrollo móvil con React Native, creación y consumo de APIs REST con Python, integración de modelos preentrenados de Hugging Face y manejo de comunicación entre una aplicación móvil y un servicio backend.",
+
+    technologies: ["React Native", "Python", "Hugging Face", "API REST"],
+
+    date: "Diciembre 2024",
+
+    role: "Desarrollador de la aplicación móvil y API",
+
+    features: [
+      "Interpretación de expresiones coloquiales de El Salvador al inglés estadounidense.",
+      "Interpretación de frases del inglés estadounidense al español coloquial salvadoreño.",
+      "Consumo de una API REST desarrollada con Python.",
+      "Integración de un modelo preentrenado de Hugging Face.",
+      "Interfaz móvil desarrollada con React Native.",
+      "Comunicación entre la aplicación móvil y el backend mediante peticiones HTTP.",
+      "Procesamiento de texto orientado a modismos y expresiones culturales.",
+      "Diseño de una solución enfocada en interpretación lingüística y contexto local.",
+    ],
+
+    images: [
+      "/images/Proyectos/translateapp/login.png",
+      "/images/Proyectos/translateapp/principal.png",
+      "/images/Proyectos/translateapp/spanish.png",
+      "/images/Proyectos/translateapp/change.png",
+      "/images/Proyectos/translateapp/english.png",
     ],
   },
 ];
