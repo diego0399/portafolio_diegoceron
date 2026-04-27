@@ -51,10 +51,15 @@ const techIcons: Record<Tech, ReactNode> = {
   Swift: <SiSwift className="text-orange-500 text-lg" />,
   Firebase: <SiFirebase className="text-yellow-500 text-lg" />,
 };
+
 interface Project {
   title: string;
   description: string;
   longDescription?: string;
+  problem?: string;
+  solution?: string;
+  impact?: string;
+  learned?: string;
   technologies: Tech[];
   images: string[];
   date: string;
@@ -66,23 +71,44 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Página web para compra de equipo y perifericos de cómputo",
+    title: "Tienda Web de Equipo y Periféricos de Cómputo",
     description:
-      "Página web desarrollada para una empresa local, permitiendo a los usuarios explorar y adquirir productos de cómputo a través de una interfaz atractiva y funcional.",
+      "Página web desarrollada para una empresa local, permitiendo a los usuarios explorar productos de cómputo, agregarlos al carrito y realizar compras desde una interfaz web funcional.",
+
     longDescription:
-      "Además de la funcionalidad de compra, la página incluye un sistema de administración para gestionar productos, categorías y pedidos, facilitando la operación del negocio en línea.",
+      "Sistema web desarrollado para digitalizar la venta de equipo y periféricos de cómputo. La plataforma permite mostrar productos mediante un catálogo dinámico, gestionar usuarios, administrar productos, categorías y pedidos, además de generar reportes gráficos para apoyar el análisis de ventas del negocio.",
+
+    problem:
+      "La empresa necesitaba una forma más organizada de mostrar sus productos y administrar sus ventas, ya que el proceso manual dificultaba el control de pedidos, productos disponibles y clientes registrados.",
+
+    solution:
+      "Se desarrolló una tienda web con catálogo de productos, carrito de compras, proceso de checkout, autenticación de usuarios y un panel administrativo para gestionar la información del negocio.",
+
+    impact:
+      "El sistema permitió centralizar la gestión de productos, clientes y pedidos, facilitando la administración del negocio y mejorando la experiencia de los usuarios al consultar y comprar productos.",
+
+    learned:
+      "En este proyecto reforcé mis conocimientos en desarrollo web con PHP, manejo de sesiones, operaciones CRUD, conexión con bases de datos MySQL, creación de carritos de compra y generación de reportes gráficos.",
+
     technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
+
     date: "Diciembre 2020",
+
     role: "Desarrollador web",
+
     features: [
-      "Desarrollo de catálogo de productos dinámico.",
-      "Implementación de carrito de compras y proceso de checkout.",
-      "Sistema de autenticación y gestión de usuarios.",
-      "Panel de administración para productos, categorías y pedidos.",
-      "Generación de reportes gráficos estadísticos para análisis de ventas.",
-      "Integración con base de datos relacional para almacenamiento de información.",
-      "Operaciones CRUD para la gestión de productos y clientes.",
+      "Catálogo dinámico de productos.",
+      "Carrito de compras.",
+      "Proceso de checkout.",
+      "Inicio de sesión y gestión de usuarios.",
+      "Panel administrativo para productos, categorías y pedidos.",
+      "Gestión de clientes.",
+      "Generación de reportes gráficos estadísticos.",
+      "Registro de compras y generación de factura.",
+      "Integración con base de datos MySQL.",
+      "Operaciones CRUD para la administración del sistema.",
     ],
+
     images: [
       "/images/Proyectos/computerstore/principal.png",
       "/images/Proyectos/computerstore/login.png",
@@ -94,22 +120,41 @@ const projects: Project[] = [
   {
     title: "Sistema Web de Gestión Ganadera",
     description:
-      "Sistema web desarrollado para la administración integral de una granja bovina, permitiendo el control de animales, producción de leche y procesos reproductivos mediante una interfaz clara y funcional.",
+      "Sistema web desarrollado para la administración integral de una granja bovina, permitiendo controlar animales, producción de leche y procesos reproductivos desde una interfaz clara y funcional.",
+
     longDescription:
-      "La plataforma fue desarrollada bajo el patrón de arquitectura Modelo-Vista-Controlador (MVC), permite gestionar información detallada de cada vaca, incluyendo identificación, parentesco, estado de gestación y producción lechera. Además, incorpora un sistema administrativo que facilita el control de registros, análisis de datos productivos y apoyo en la toma de decisiones dentro de la granja.",
+      "Sistema web desarrollado bajo el patrón Modelo-Vista-Controlador (MVC) para gestionar información ganadera de una granja bovina. La plataforma permite registrar información individual de cada vaca, controlar parentesco, estado de gestación, producción diaria de leche y generar reportes estadísticos para apoyar la toma de decisiones dentro de la granja.",
+
+    problem:
+      "La granja necesitaba mejorar el control de la información del ganado, ya que llevar registros manuales sobre producción de leche, gestación y parentesco podía provocar desorden, pérdida de datos y dificultad para analizar el rendimiento de los animales.",
+
+    solution:
+      "Se desarrolló un sistema web administrativo que permite registrar y consultar información detallada del ganado, controlar la producción lechera, gestionar procesos reproductivos y visualizar reportes estadísticos.",
+
+    impact:
+      "El sistema ayudó a organizar los registros ganaderos, facilitó el seguimiento de cada animal y permitió consultar información productiva de forma más rápida y estructurada.",
+
+    learned:
+      "En este proyecto fortalecí mis conocimientos en Java, arquitectura MVC, conexión con SQL Server, consultas a bases de datos relacionales, manejo de formularios y desarrollo de módulos administrativos.",
+
     technologies: ["Java", "HTML", "CSS", "jQuery", "SQL Server"],
+
     date: "Diciembre 2021",
+
     role: "Desarrollador del sistema",
+
     features: [
       "Registro e identificación individual de cada vaca.",
       "Gestión de parentesco para control genético del ganado.",
-      "Monitoreo del estado de gestación y control reproductivo.",
+      "Monitoreo del estado de gestación.",
+      "Control de procesos reproductivos.",
       "Registro y seguimiento de la producción diaria de leche.",
       "Panel administrativo para gestión de datos ganaderos.",
       "Generación de reportes estadísticos sobre producción y rendimiento.",
-      "Integración con base de datos relacional para almacenamiento seguro de la información.",
+      "Integración con base de datos SQL Server.",
       "Operaciones CRUD para la gestión de animales y registros productivos.",
     ],
+
     images: [
       "/images/Proyectos/Proyecto Granja/login.png",
       "/images/Proyectos/Proyecto Granja/principal.png",
@@ -118,21 +163,42 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Sistema de Control de Inventario para Empresa Crio",
+    title: "Sistema de Control de Inventario para Empresa CRIO",
     description:
-      "Sistema diseñado para supervisar, organizar y gestionar el stock de mercancías, permitiendo un control eficiente de entradas, salidas y disponibilidad de productos.",
+      "Sistema web desarrollado para gestionar productos, almacenes y movimientos de inventario, facilitando el control de entradas, salidas y disponibilidad de mercancías.",
+
     longDescription:
-      "Sistema web desarrollado bajo el patrón de diseño MVC, para administrar productos, almacenes, usuarios y movimientos de inventario. Permite controlar entradas, salidas y disponibilidad de mercancías de forma más ordenada.",
+      "Sistema web desarrollado bajo el patrón MVC para mejorar la administración del inventario de la empresa CRIO. La solución permite registrar productos, gestionar almacenes, controlar entradas y salidas de mercancía, consultar existencias disponibles y administrar usuarios del sistema desde una interfaz web.",
+
+    problem:
+      "La empresa necesitaba una forma más ordenada de controlar su inventario, ya que el manejo manual de productos, almacenes y movimientos podía generar errores, pérdida de información y dificultad para consultar la disponibilidad de mercancías.",
+
+    solution:
+      "Se desarrolló un sistema web que centraliza la gestión de productos, almacenes, usuarios y movimientos de inventario, permitiendo registrar entradas y salidas de mercancía de forma más eficiente.",
+
+    impact:
+      "El sistema permitió organizar mejor la información del inventario, agilizar la consulta de existencias y reducir la dependencia de registros manuales.",
+
+    learned:
+      "En este proyecto reforcé mis conocimientos en desarrollo web con PHP, conexión a bases de datos MySQL, operaciones CRUD, manejo de sesiones y organización del código bajo el patrón MVC.",
+
     technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
+
     date: "Octubre 2022",
+
     role: "Desarrollador del sistema",
+
     features: [
-      "Inicio de sesión para usuarios del sistema.",
-      "Gestión de productos y almacenes.",
-      "Control de entradas y salidas de inventario.",
+      "Inicio de sesión para usuarios autorizados.",
+      "Gestión de productos registrados en el inventario.",
+      "Administración de almacenes.",
+      "Registro de entradas de mercancía.",
+      "Registro de salidas de mercancía.",
       "Consulta de disponibilidad de productos.",
-      "Administración de registros desde una interfaz web.",
+      "Administración de usuarios del sistema.",
+      "Control de registros desde una interfaz web.",
     ],
+
     images: [
       "/images/Proyectos/SistemaCrio/login.png",
       "/images/Proyectos/SistemaCrio/dashboard.png",
@@ -145,19 +211,39 @@ const projects: Project[] = [
     title: "Aplicación de Chat Educativo para iOS",
     description:
       "Aplicación móvil desarrollada para facilitar la comunicación entre usuarios en un entorno educativo, permitiendo el intercambio de mensajes en tiempo real.",
+
     longDescription:
-      "Aplicación desarrollada en iOS utilizando SwiftUI y el patrón de arquitectura MVVM. Integra Firebase como base de datos NoSQL y servicio de autenticación, permitiendo a los usuarios registrarse, iniciar sesión y comunicarse mediante chat en tiempo real con otros usuarios registrados.",
+      "Aplicación móvil desarrollada para iOS utilizando SwiftUI y el patrón de arquitectura MVVM. Integra Firebase como servicio de autenticación y base de datos NoSQL, permitiendo a los usuarios registrarse, iniciar sesión y comunicarse mediante mensajes en tiempo real con otros usuarios registrados.",
+
+    problem:
+      "En un entorno educativo, los usuarios necesitaban una forma sencilla de comunicarse en tiempo real desde una aplicación móvil, manteniendo acceso mediante cuentas registradas y conversaciones organizadas.",
+
+    solution:
+      "Se desarrolló una aplicación iOS con autenticación de usuarios, registro de cuentas y mensajería en tiempo real utilizando SwiftUI, Firebase Authentication y Firebase Firestore.",
+
+    impact:
+      "La aplicación permitió crear una base funcional para la comunicación educativa mediante chat, integrando autenticación, almacenamiento en la nube y actualización de mensajes en tiempo real.",
+
+    learned:
+      "En este proyecto aprendí a estructurar una aplicación móvil con SwiftUI, aplicar el patrón MVVM, integrar Firebase Authentication, utilizar Firestore como base de datos NoSQL y manejar comunicación en tiempo real.",
+
     technologies: ["SwiftUI", "Swift", "Firebase"],
+
     date: "Diciembre 2023",
+
     role: "Desarrollador de la aplicación",
+
     features: [
-      "Registro e inicio de sesión de usuarios mediante Firebase Authentication.",
-      "Mensajería en tiempo real entre usuarios registrados.",
-      "Arquitectura basada en el patrón MVVM.",
-      "Integración con base de datos NoSQL (Firebase Firestore).",
+      "Registro de usuarios mediante Firebase Authentication.",
+      "Inicio de sesión de usuarios registrados.",
+      "Mensajería en tiempo real.",
       "Gestión de usuarios y conversaciones.",
+      "Almacenamiento de mensajes en Firebase Firestore.",
+      "Arquitectura basada en el patrón MVVM.",
       "Interfaz desarrollada con SwiftUI.",
+      "Base de datos NoSQL en la nube.",
     ],
+
     images: [
       "/images/Proyectos/educhat/login.png",
       "/images/Proyectos/educhat/register2.png",
@@ -290,6 +376,7 @@ export default function Projects() {
               <button
                 type="button"
                 onClick={() => setSelectedProject(null)}
+                aria-label="Cerrar detalles del proyecto"
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition flex-shrink-0 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
               >
                 <FaTimes />
@@ -321,6 +408,54 @@ export default function Projects() {
                       selectedProject.description}
                   </p>
                 </div>
+
+                {selectedProject.problem && (
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
+                      Problema
+                    </h4>
+
+                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
+                      {selectedProject.problem}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.solution && (
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
+                      Solución
+                    </h4>
+
+                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
+                      {selectedProject.solution}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.impact && (
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
+                      Impacto
+                    </h4>
+
+                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
+                      {selectedProject.impact}
+                    </p>
+                  </div>
+                )}
+
+                {selectedProject.learned && (
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
+                      Aprendizaje
+                    </h4>
+
+                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
+                      {selectedProject.learned}
+                    </p>
+                  </div>
+                )}
 
                 {selectedProject.features && (
                   <div>
