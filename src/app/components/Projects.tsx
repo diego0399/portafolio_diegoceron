@@ -38,6 +38,8 @@ type Tech =
   | "MySQL"
   | "SQL Server"
   | "Java"
+  | "Java EE"
+  | "JPA"
   | "Spring Boot"
   | "Spring Data JPA"
   | "SwiftUI"
@@ -68,9 +70,14 @@ const techIcons: Record<Tech, ReactNode> = {
   jQuery: <SiJquery className="text-blue-600 text-lg" />,
   MySQL: <SiMysql className="text-blue-600 text-lg" />,
   "SQL Server": <FaDatabase className="text-red-600 text-lg" />,
+
   Java: <FaJava className="text-red-600 text-lg" />,
+  "Java EE": <FaJava className="text-red-700 text-lg" />,
+  JPA: <FaDatabase className="text-purple-600 text-lg" />,
+
   "Spring Boot": <SiSpringboot className="text-green-600 text-lg" />,
   "Spring Data JPA": <SiSpringboot className="text-green-700 text-lg" />,
+
   SwiftUI: <FaApple className="text-gray-900 dark:text-white text-lg" />,
   Swift: <SiSwift className="text-orange-500 text-lg" />,
   Firebase: <SiFirebase className="text-yellow-500 text-lg" />,
@@ -334,6 +341,51 @@ const projects: Project[] = [
       "/images/Proyectos/translateapp/spanish.png",
       "/images/Proyectos/translateapp/change.png",
       "/images/Proyectos/translateapp/english.png",
+    ],
+  },
+  {
+    title:
+      "Sistema Institucional de Consulta de Libros y Generación de Certificaciones",
+    categories: ["Web"],
+
+    description:
+      "Sistema web desarrollado con Java EE, JPA y Oracle para una institución pública, orientado a la consulta de libros y la generación de certificaciones.",
+
+    longDescription:
+      "Sistema web desarrollado para una institución pública con el objetivo de facilitar la consulta de libros registrados en el sistema y permitir la generación de certificaciones de forma inmediata. La solución fue construida con Java EE, utilizando JPA para la persistencia de datos y Oracle como base de datos, permitiendo gestionar la información de manera estructurada y eficiente dentro de un entorno institucional.",
+
+    problem:
+      "La consulta manual de información bibliográfica y la elaboración de certificaciones puede volver más lento el proceso de atención, dificultando el acceso rápido a los datos y aumentando el tiempo de respuesta dentro de la institución.",
+
+    solution:
+      "Se desarrolló un sistema web con Java EE que permite consultar libros almacenados en una base de datos Oracle y generar certificaciones de forma inmediata a partir de la información registrada. Para la persistencia de datos se utilizó JPA, facilitando la gestión y acceso a la información desde la aplicación.",
+
+    impact:
+      "El sistema agiliza la consulta de información y reduce el tiempo necesario para emitir certificaciones, mejorando la eficiencia del proceso y brindando una herramienta más organizada para la gestión institucional.",
+
+    learned:
+      "En este proyecto reforcé mis conocimientos en desarrollo de aplicaciones web con Java EE, persistencia de datos con JPA, manejo de bases de datos Oracle y construcción de soluciones orientadas a procesos institucionales.",
+
+    technologies: ["Java EE", "Java", "JPA", "Oracle"],
+
+    date: "Diciembre 2025",
+
+    role: "Desarrollador del sistema",
+
+    features: [
+      "Consulta de libros registrados en el sistema.",
+      "Búsqueda de información bibliográfica.",
+      "Generación inmediata de certificaciones.",
+      "Persistencia de datos con JPA.",
+      "Gestión de información en base de datos Oracle.",
+      "Sistema orientado a procesos institucionales.",
+    ],
+
+    images: [
+      "/images/Proyectos/certificaciones/login.png",
+      "/images/Proyectos/certificaciones/principal.png",
+      "/images/Proyectos/certificaciones/consulta.png",
+      "/images/Proyectos/certificaciones/libros.png",
     ],
   },
   {

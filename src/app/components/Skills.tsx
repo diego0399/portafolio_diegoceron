@@ -1,96 +1,191 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import { ReactNode } from "react";
+import {
+  FaPhp,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaJava,
+  FaDatabase,
+  FaPython,
+  FaReact,
+  FaServer,
+  FaApple,
+  FaRobot,
+} from "react-icons/fa";
+
+import {
+  SiSpringboot,
+  SiMysql,
+  SiJquery,
+  SiSwift,
+  SiFirebase,
+  SiAngular,
+  SiTypescript,
+} from "react-icons/si";
 
 type Skill = {
   name: string;
-  img: string;
+  icon: ReactNode;
+  description: string;
 };
 
-type SkillGridProps = {
+type SkillGroupProps = {
   title: string;
+  description: string;
   skills: Skill[];
 };
 
 export default function Skills() {
-  const frontendSkills: Skill[] = [
-    {
-      name: "HTML",
-      img: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
-    },
-    {
-      name: "CSS",
-      img: "https://www.adaweb.es/wp-content/uploads/2022/05/logotipo_css-min.png",
-    },
-    {
-      name: "React Native",
-      img: "https://cdn.worldvectorlogo.com/logos/react-native-1.svg",
-    },
-    {
-      name: "JavaScript",
-      img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-    },
-    {
-      name: "TypeScript",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/330px-Typescript_logo_2020.svg.png",
-    },
-  ];
-
-  const SGBDSkills: Skill[] = [
-    {
-      name: "SQL SERVER",
-      img: "https://red9.com/wp-content/uploads/2024/03/sql-server-builds.jpg",
-    },
-    {
-      name: "MYSQL",
-      img: "https://www.ovhcloud.com/sites/default/files/styles/large_screens_1x/public/2021-09/ECX-1909_Hero_MySQL_600x400%402x-1.png",
-    },
-    {
-      name: "ORACLE",
-      img: "https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png",
-    },
-    {
-      name: "Firebase",
-      img: "https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/firebase/images/touchicon-180.png",
-    },
-  ];
-
   const backendSkills: Skill[] = [
     {
       name: "Java",
-      img: "https://cdn.worldvectorlogo.com/logos/java-4.svg",
+      icon: <FaJava className="text-red-600 text-3xl" />,
+      description: "Desarrollo backend y lógica de negocio.",
+    },
+    {
+      name: "Java EE",
+      icon: <FaJava className="text-red-700 text-3xl" />,
+      description: "Aplicaciones web empresariales.",
+    },
+    {
+      name: "Spring Boot",
+      icon: <SiSpringboot className="text-green-600 text-3xl" />,
+      description: "Creación de APIs y servicios backend.",
+    },
+    {
+      name: "Spring Data JPA",
+      icon: <SiSpringboot className="text-green-700 text-3xl" />,
+      description: "Persistencia de datos en aplicaciones Java.",
+    },
+    {
+      name: "JPA",
+      icon: <FaDatabase className="text-purple-600 text-3xl" />,
+      description: "Mapeo y gestión de entidades.",
     },
     {
       name: "PHP",
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1280px-PHP-logo.svg.png",
+      icon: <FaPhp className="text-indigo-600 text-3xl" />,
+      description: "Desarrollo de sistemas web dinámicos.",
     },
     {
-      name: "C Sharp",
-      img: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png",
+      name: "Python",
+      icon: <FaPython className="text-blue-500 text-3xl" />,
+      description: "Creación de servicios y consumo de modelos.",
+    },
+    {
+      name: "API REST",
+      icon: <FaServer className="text-green-600 text-3xl" />,
+      description: "Comunicación entre frontend y backend.",
+    },
+    {
+      name: "Hugging Face",
+      icon: <FaRobot className="text-yellow-500 text-3xl" />,
+      description: "Integración de modelos mediante API.",
     },
   ];
 
-  const SkillGrid = ({ title, skills }: SkillGridProps) => (
-    <div className="mb-14">
-      <h3 className="text-2xl font-bold text-gray-800 mb-6 dark:text-gray-100">
-        {title}
-      </h3>
+  const frontendMobileSkills: Skill[] = [
+    {
+      name: "HTML",
+      icon: <FaHtml5 className="text-orange-500 text-3xl" />,
+      description: "Estructura de interfaces web.",
+    },
+    {
+      name: "CSS",
+      icon: <FaCss3Alt className="text-blue-500 text-3xl" />,
+      description: "Diseño visual y estilos responsivos.",
+    },
+    {
+      name: "JavaScript",
+      icon: <FaJs className="text-yellow-400 text-3xl" />,
+      description: "Interactividad en aplicaciones web.",
+    },
+    {
+      name: "TypeScript",
+      icon: <SiTypescript className="text-blue-600 text-3xl" />,
+      description: "Código más seguro y mantenible.",
+    },
+    {
+      name: "Angular",
+      icon: <SiAngular className="text-red-600 text-3xl" />,
+      description: "Desarrollo de interfaces web modernas.",
+    },
+    {
+      name: "jQuery",
+      icon: <SiJquery className="text-blue-600 text-3xl" />,
+      description: "Manipulación del DOM e interacciones web.",
+    },
+    {
+      name: "React Native",
+      icon: <FaReact className="text-cyan-500 text-3xl" />,
+      description: "Aplicaciones móviles multiplataforma.",
+    },
+    {
+      name: "SwiftUI",
+      icon: <FaApple className="text-gray-900 text-3xl dark:text-white" />,
+      description: "Interfaces modernas para aplicaciones iOS.",
+    },
+    {
+      name: "Swift",
+      icon: <SiSwift className="text-orange-500 text-3xl" />,
+      description: "Desarrollo de aplicaciones para iOS.",
+    },
+  ];
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {skills.map((skill, index) => (
+  const databaseSkills: Skill[] = [
+    {
+      name: "MySQL",
+      icon: <SiMysql className="text-blue-600 text-3xl" />,
+      description: "Bases de datos relacionales para sistemas web.",
+    },
+    {
+      name: "SQL Server",
+      icon: <FaDatabase className="text-red-600 text-3xl" />,
+      description: "Gestión de datos en entornos empresariales.",
+    },
+    {
+      name: "Oracle",
+      icon: <FaDatabase className="text-red-700 text-3xl" />,
+      description: "Base de datos para aplicaciones institucionales.",
+    },
+    {
+      name: "Firebase",
+      icon: <SiFirebase className="text-yellow-500 text-3xl" />,
+      description: "Autenticación y base de datos en tiempo real.",
+    },
+  ];
+
+  const SkillGroup = ({ title, description, skills }: SkillGroupProps) => (
+    <div className="mb-16">
+      <div className="mb-7 text-left">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+          {title}
+        </h3>
+
+        <p className="mt-2 text-gray-600 dark:text-gray-300">{description}</p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {skills.map((skill) => (
           <div
-            key={index}
-            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
+            key={skill.name}
+            className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-blue-200 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-blue-500/40"
           >
-            <div className="w-20 h-20 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 p-3 dark:bg-slate-800">
-              <img
-                src={skill.img}
-                alt={skill.name}
-                className="w-full h-full object-contain"
-              />
+            <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 dark:bg-slate-800">
+              {skill.icon}
             </div>
 
-            <p className="text-gray-800 font-semibold mb-2 dark:text-gray-100">
-              {skill.name}
-            </p>
+            <div className="text-left">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white">
+                {skill.name}
+              </h4>
+
+              <p className="mt-1 text-sm text-gray-600 leading-relaxed dark:text-gray-300">
+                {skill.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -100,25 +195,70 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 px-6 bg-gray-50 text-center transition-colors duration-300 dark:bg-slate-950"
+      className="py-20 px-4 md:px-6 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
     >
-      <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
-        Tecnologías
-      </span>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
+            Tecnologías
+          </span>
 
-      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4 dark:text-white">
-        Habilidades
-      </h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 dark:text-white">
+            Habilidades
+          </h2>
 
-      <p className="text-gray-600 max-w-2xl mx-auto mb-12 dark:text-gray-300">
-        Tecnologías y herramientas con las que he trabajado en desarrollo web,
-        backend, bases de datos y aplicaciones.
-      </p>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed dark:text-gray-300">
+            Tecnologías que he utilizado en proyectos web, aplicaciones móviles,
+            APIs, bases de datos y soluciones orientadas a la lógica de negocio.
+          </p>
+        </div>
 
-      <div className="max-w-6xl mx-auto">
-        <SkillGrid title="Back-end" skills={backendSkills} />
-        <SkillGrid title="SGBD" skills={SGBDSkills} />
-        <SkillGrid title="Front-end" skills={frontendSkills} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              8+
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Tecnologías backend
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              9+
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Tecnologías frontend y móvil
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              4
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Bases de datos utilizadas
+            </p>
+          </div>
+        </div>
+
+        <SkillGroup
+          title="Back-end y APIs"
+          description="Tecnologías utilizadas para crear lógica de negocio, servicios, persistencia de datos y comunicación entre sistemas."
+          skills={backendSkills}
+        />
+
+        <SkillGroup
+          title="Front-end y móvil"
+          description="Tecnologías utilizadas para construir interfaces web, aplicaciones móviles y experiencias de usuario."
+          skills={frontendMobileSkills}
+        />
+
+        <SkillGroup
+          title="Bases de datos"
+          description="Motores y servicios de almacenamiento usados en proyectos web y móviles."
+          skills={databaseSkills}
+        />
       </div>
     </section>
   );
