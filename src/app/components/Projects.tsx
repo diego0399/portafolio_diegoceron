@@ -25,6 +25,8 @@ import {
   SiJquery,
   SiSwift,
   SiFirebase,
+  SiAngular,
+  SiTypescript,
 } from "react-icons/si";
 
 type Tech =
@@ -37,13 +39,17 @@ type Tech =
   | "SQL Server"
   | "Java"
   | "Spring Boot"
+  | "Spring Data JPA"
   | "SwiftUI"
   | "Swift"
   | "Firebase"
   | "Python"
   | "React Native"
   | "Hugging Face"
-  | "API REST";
+  | "API REST"
+  | "Angular"
+  | "TypeScript"
+  | "Oracle";
 
 type ProjectCategory = "Web" | "Móvil" | "API";
 
@@ -64,6 +70,7 @@ const techIcons: Record<Tech, ReactNode> = {
   "SQL Server": <FaDatabase className="text-red-600 text-lg" />,
   Java: <FaJava className="text-red-600 text-lg" />,
   "Spring Boot": <SiSpringboot className="text-green-600 text-lg" />,
+  "Spring Data JPA": <SiSpringboot className="text-green-700 text-lg" />,
   SwiftUI: <FaApple className="text-gray-900 dark:text-white text-lg" />,
   Swift: <SiSwift className="text-orange-500 text-lg" />,
   Firebase: <SiFirebase className="text-yellow-500 text-lg" />,
@@ -71,6 +78,9 @@ const techIcons: Record<Tech, ReactNode> = {
   "React Native": <FaReact className="text-cyan-500 text-lg" />,
   "Hugging Face": <FaRobot className="text-yellow-500 text-lg" />,
   "API REST": <FaServer className="text-green-600 text-lg" />,
+  Angular: <SiAngular className="text-red-600 text-lg" />,
+  TypeScript: <SiTypescript className="text-blue-600 text-lg" />,
+  Oracle: <FaDatabase className="text-red-700 text-lg" />,
 };
 
 interface Project {
@@ -324,6 +334,62 @@ const projects: Project[] = [
       "/images/Proyectos/translateapp/spanish.png",
       "/images/Proyectos/translateapp/change.png",
       "/images/Proyectos/translateapp/english.png",
+    ],
+  },
+  {
+    title: "Sistema Web CRUD con Angular y Spring Boot",
+    categories: ["Web", "API"],
+
+    description:
+      "Sistema web desarrollado con Angular que consume una API REST creada con Spring Boot, JPA y Oracle, permitiendo gestionar registros mediante operaciones CRUD.",
+
+    longDescription:
+      "Sistema web desarrollado con Angular para la gestión de registros desde una interfaz clara y dinámica. La aplicación consume una API REST creada con Spring Boot y Spring Data JPA, conectada a una base de datos Oracle, permitiendo realizar operaciones de creación, consulta, actualización y eliminación de datos. El backend se encarga de manejar la lógica del sistema, la persistencia de datos y la comunicación con la base de datos, mientras que el frontend permite al usuario interactuar con la información de forma sencilla.",
+
+    problem:
+      "La gestión manual de información puede generar desorden, pérdida de datos y dificultad para consultar, actualizar o eliminar registros de forma eficiente.",
+
+    solution:
+      "Se desarrolló una solución web dividida en frontend y backend. El frontend fue creado con Angular para mostrar y gestionar la información, mientras que el backend fue desarrollado con Spring Boot y Spring Data JPA mediante una API REST conectada a Oracle, encargada de procesar las operaciones CRUD y administrar la persistencia de los datos.",
+
+    impact:
+      "El sistema permite administrar información de manera más ordenada, rápida y centralizada, facilitando el registro, consulta, edición y eliminación de datos desde una interfaz web conectada a un backend estructurado.",
+
+    learned:
+      "En este proyecto reforcé mis conocimientos en desarrollo frontend con Angular, creación de APIs REST con Spring Boot, persistencia de datos con Spring Data JPA, conexión a bases de datos Oracle, consumo de servicios HTTP y separación entre frontend, backend y base de datos.",
+
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "Java",
+      "Spring Boot",
+      "Spring Data JPA",
+      "API REST",
+      "Oracle",
+    ],
+
+    date: "Enero 2026",
+
+    role: "Desarrollador frontend y backend",
+
+    features: [
+      "Listado de registros obtenidos desde una API REST.",
+      "Creación de nuevos registros desde formularios en Angular.",
+      "Edición de información existente.",
+      "Eliminación de registros.",
+      "Consumo de servicios HTTP desde Angular.",
+      "API REST desarrollada con Spring Boot.",
+      "Persistencia de datos mediante Spring Data JPA.",
+      "Conexión del backend con base de datos Oracle.",
+      "Separación entre frontend, backend y base de datos.",
+    ],
+
+    images: [
+      "/images/Proyectos/crudspring/login.png",
+      "/images/Proyectos/crudspring/principal.png",
+      "/images/Proyectos/crudspring/post.png",
+      "/images/Proyectos/crudspring/put.png",
+      "/images/Proyectos/crudspring/delete.png",
     ],
   },
 ];
