@@ -29,31 +29,72 @@ export default function Hero() {
       >
         <motion.div
           className="relative flex justify-center mb-8"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           {/* Brillo de fondo */}
           <div className="absolute inset-0 flex justify-center items-center">
-            <div className="w-80 h-80 md:w-[420px] md:h-[420px] rounded-full bg-blue-500/20 blur-3xl dark:bg-blue-400/20" />
+            <motion.div
+              className="w-80 h-80 md:w-[420px] md:h-[420px] rounded-full bg-blue-500/20 blur-3xl dark:bg-blue-400/20"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 0.8, 1],
+              }}
+              transition={{
+                duration: 2.5,
+                ease: "easeInOut",
+              }}
+            />
           </div>
 
           {/* Marco degradado */}
           <motion.div
             className="relative p-2 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-400 to-green-400 shadow-2xl"
-            whileHover={{ scale: 1.04, rotate: 2 }}
-            transition={{ type: "spring", stiffness: 220, damping: 15 }}
+            initial={{
+              opacity: 0,
+              rotate: -6,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              rotate: [-6, 4, -2, 0],
+              y: [20, -10, 0],
+            }}
+            transition={{
+              duration: 2.8,
+              ease: "easeInOut",
+            }}
+            whileHover={{
+              scale: 1.04,
+              rotate: 2,
+            }}
           >
             <div className="p-1 rounded-full bg-white dark:bg-slate-900">
-              <Image
-                src="/images/diegoperfil.jpg"
-                alt="Foto de Diego Alejandro Ceron"
-                width={400}
-                height={400}
-                className="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover shadow-xl border-4 border-white dark:border-slate-800"
-                unoptimized
-                priority
-              />
+              <motion.div
+                initial={{
+                  rotate: -3,
+                  y: 10,
+                }}
+                animate={{
+                  rotate: [-3, 3, 0],
+                  y: [10, -6, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  ease: "easeInOut",
+                }}
+              >
+                <Image
+                  src="/images/diegoperfil.jpg"
+                  alt="Foto de Diego Alejandro Ceron"
+                  width={400}
+                  height={400}
+                  className="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover shadow-xl border-4 border-white dark:border-slate-800"
+                  unoptimized
+                  priority
+                />
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>

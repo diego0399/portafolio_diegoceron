@@ -45,6 +45,15 @@ type Tech =
   | "Hugging Face"
   | "API REST";
 
+type ProjectCategory = "Web" | "Móvil" | "API";
+
+const projectFilters: ("Todos" | ProjectCategory)[] = [
+  "Todos",
+  "Web",
+  "Móvil",
+  "API",
+];
+
 const techIcons: Record<Tech, ReactNode> = {
   PHP: <FaPhp className="text-indigo-600 text-lg" />,
   HTML: <FaHtml5 className="text-orange-500 text-lg" />,
@@ -73,6 +82,7 @@ interface Project {
   impact?: string;
   learned?: string;
   technologies: Tech[];
+  categories: ProjectCategory[];
   images: string[];
   date: string;
   role?: string;
@@ -84,6 +94,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Tienda Web de Equipo y Periféricos de Cómputo",
+    categories: ["Web"],
     description:
       "Página web desarrollada para una empresa local, permitiendo a los usuarios explorar productos de cómputo, agregarlos al carrito y realizar compras desde una interfaz web funcional.",
 
@@ -131,6 +142,7 @@ const projects: Project[] = [
   },
   {
     title: "Sistema Web de Gestión Ganadera",
+    categories: ["Web"],
     description:
       "Sistema web desarrollado para la administración integral de una granja bovina, permitiendo controlar animales, producción de leche y procesos reproductivos desde una interfaz clara y funcional.",
 
@@ -176,6 +188,7 @@ const projects: Project[] = [
   },
   {
     title: "Sistema de Control de Inventario para Empresa CRIO",
+    categories: ["Web"],
     description:
       "Sistema web desarrollado para gestionar productos, almacenes y movimientos de inventario, facilitando el control de entradas, salidas y disponibilidad de mercancías.",
 
@@ -221,6 +234,7 @@ const projects: Project[] = [
   },
   {
     title: "Aplicación de Chat Educativo para iOS",
+    categories: ["Móvil"],
     description:
       "Aplicación móvil desarrollada para facilitar la comunicación entre usuarios en un entorno educativo, permitiendo el intercambio de mensajes en tiempo real.",
 
@@ -265,9 +279,9 @@ const projects: Project[] = [
       "/images/Proyectos/educhat/principal4.png",
     ],
   },
-
   {
     title: "Aplicación Móvil de Interpretación Coloquial Salvadoreña",
+    categories: ["Móvil", "API"],
 
     description:
       "Aplicación móvil desarrollada para interpretar expresiones coloquiales de El Salvador al inglés estadounidense y viceversa, utilizando un modelo preentrenado de Hugging Face consumido mediante una API en Python.",
@@ -316,6 +330,14 @@ const projects: Project[] = [
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<"Todos" | ProjectCategory>(
+    "Todos",
+  );
+
+  const filteredProjects =
+    activeFilter === "Todos"
+      ? projects
+      : projects.filter((project) => project.categories.includes(activeFilter));
 
   useEffect(() => {
     document.body.style.overflow = selectedProject ? "hidden" : "";
@@ -331,7 +353,7 @@ export default function Projects() {
       className="py-20 px-4 md:px-6 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
             Portafolio
           </span>
@@ -346,8 +368,25 @@ export default function Projects() {
           </p>
         </div>
 
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {projectFilters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
+                activeFilter === filter
+                  ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-blue-500 hover:text-blue-600 dark:bg-slate-900 dark:text-gray-300 dark:border-slate-700 dark:hover:text-blue-400"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 gap-12">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <article
               key={index}
               className="bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
