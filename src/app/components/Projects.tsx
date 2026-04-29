@@ -466,285 +466,159 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section
-      id="projects"
-      className="py-20 px-4 md:px-6 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
-            Portafolio
-          </span>
+   <section className="px-4 pt-28 pb-16 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-6xl">
+    <div className="text-center">
+      <span className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+        Portafolio
+      </span>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 dark:text-white">
-            Proyectos
-          </h2>
+      <h2 className="mt-3 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+        Proyectos
+      </h2>
 
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed dark:text-gray-300">
-            Proyectos desarrollados aplicando tecnologías web, bases de datos y
-            lógica de negocio.
-          </p>
-        </div>
+      <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
+        Proyectos desarrollados aplicando tecnologías web, bases de datos y lógica de negocio.
+      </p>
+    </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {projectFilters.map((filter) => (
-            <button
-              key={filter}
-              type="button"
-              onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${
-                activeFilter === filter
-                  ? "bg-blue-600 text-white border-blue-600 shadow-md"
-                  : "bg-white text-gray-700 border-gray-200 hover:border-blue-500 hover:text-blue-600 dark:bg-slate-900 dark:text-gray-300 dark:border-slate-700 dark:hover:text-blue-400"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 gap-12">
-          {filteredProjects.map((project, index) => (
-            <article
-              key={index}
-              className="bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
-            >
-              <div className="grid grid-cols-1 xl:grid-cols-[0.75fr_1.25fr]">
-                <div className="p-6 md:p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                        {project.date}
-                      </span>
-
-                      {project.role && (
-                        <span className="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full dark:bg-blue-950/40 dark:text-blue-300">
-                          {project.role}
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 dark:text-white">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-gray-600 leading-relaxed mb-6 dark:text-gray-300">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-3 mb-7">
-                      {project.technologies.map((tech, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full shadow-sm dark:bg-slate-800"
-                        >
-                          {techIcons[tech]}
-                          <span className="text-sm text-gray-700 dark:text-gray-200">
-                            {tech}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="w-fit px-5 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-blue-600 transition dark:bg-blue-600 dark:hover:bg-blue-500"
-                  >
-                    Ver detalles del proyecto
-                  </button>
-                </div>
-
-                <div className="bg-gray-100 p-4 md:p-6 transition-colors duration-300 dark:bg-slate-800/70">
-                  <ImageViewer
-                    images={project.images}
-                    variant="preview"
-                    onImageClick={() => setSelectedProject(project)}
-                  />
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {selectedProject && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setSelectedProject(null)}
+    <div className="mt-8 flex flex-wrap justify-center gap-3">
+      {projectFilters.map((filter) => (
+        <button
+          key={filter}
+          onClick={() => setActiveFilter(filter)}
+          className={`rounded-full border px-4 py-2 text-sm font-semibold transition sm:px-5 ${
+            activeFilter === filter
+              ? "border-blue-600 bg-blue-600 text-white"
+              : "border-gray-200 bg-white text-gray-700 hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-300"
+          }`}
         >
-          <div
-            className="bg-white w-full max-w-[1600px] max-h-[92vh] overflow-y-auto rounded-3xl shadow-2xl dark:bg-slate-900"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 z-20 bg-white border-b border-gray-200 px-5 md:px-8 py-4 flex items-center justify-between gap-4 dark:bg-slate-900 dark:border-slate-800">
-              <div>
-                <p className="text-sm text-blue-600 font-semibold dark:text-blue-400">
-                  {selectedProject.date}
-                </p>
+          {filter}
+        </button>
+      ))}
+    </div>
 
-                <h3 className="text-xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                  {selectedProject.title}
-                </h3>
+    <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {filteredProjects.map((project) => (
+        <article
+          key={project.title}
+          className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="p-5 sm:p-6">
+              <div className="flex flex-wrap gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                <span>{project.date}</span>
+                {project.role && <span>• {project.role}</span>}
+              </div>
+
+              <h3 className="mt-3 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
+                {project.title}
+              </h3>
+
+              <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300 sm:text-base">
+                {project.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-700 dark:bg-slate-800 dark:text-gray-300"
+                  >
+                    {techIcons[tech]} {tech}
+                  </span>
+                ))}
               </div>
 
               <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                aria-label="Cerrar detalles del proyecto"
-                className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition flex-shrink-0 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+                onClick={() => setSelectedProject(project)}
+                className="mt-6 w-full rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 sm:w-auto"
               >
-                <FaTimes />
+                Ver detalles del proyecto
               </button>
             </div>
 
-            <div className="grid grid-cols-1 2xl:grid-cols-[1.45fr_0.55fr] gap-8 p-5 md:p-8">
-              <div>
-                <ImageViewer
-                  images={selectedProject.images}
-                  title="Capturas del proyecto"
-                  variant="detail"
-                  enableZoom
-                />
-
-                <p className="text-center text-sm text-gray-500 mt-3 dark:text-gray-400">
-                  Haz clic sobre la imagen para verla en pantalla completa.
-                </p>
-              </div>
-
-              <aside className="space-y-7">
-                <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                    Descripción
-                  </h4>
-
-                  <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                    {selectedProject.longDescription ||
-                      selectedProject.description}
-                  </p>
-                </div>
-
-                {selectedProject.problem && (
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                      Problema
-                    </h4>
-
-                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                      {selectedProject.problem}
-                    </p>
-                  </div>
-                )}
-
-                {selectedProject.solution && (
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                      Solución
-                    </h4>
-
-                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                      {selectedProject.solution}
-                    </p>
-                  </div>
-                )}
-
-                {selectedProject.impact && (
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                      Impacto
-                    </h4>
-
-                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                      {selectedProject.impact}
-                    </p>
-                  </div>
-                )}
-
-                {selectedProject.learned && (
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                      Aprendizaje
-                    </h4>
-
-                    <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                      {selectedProject.learned}
-                    </p>
-                  </div>
-                )}
-
-                {selectedProject.features && (
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-3 dark:text-white">
-                      Funcionalidades
-                    </h4>
-
-                    <ul className="space-y-3">
-                      {selectedProject.features.map((feature, index) => (
-                        <li
-                          key={index}
-                          className="flex gap-3 text-gray-600 leading-relaxed dark:text-gray-300"
-                        >
-                          <span className="mt-2 w-2 h-2 rounded-full bg-blue-600 flex-shrink-0 dark:bg-blue-400" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 dark:text-white">
-                    Tecnologías
-                  </h4>
-
-                  <div className="flex flex-wrap gap-3">
-                    {selectedProject.technologies.map((tech, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-xl dark:bg-slate-800"
-                      >
-                        {techIcons[tech]}
-                        <span className="text-sm text-gray-700 dark:text-gray-200">
-                          {tech}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {(selectedProject.demoUrl || selectedProject.githubUrl) && (
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    {selectedProject.demoUrl && (
-                      <a
-                        href={selectedProject.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition dark:bg-blue-600 dark:hover:bg-blue-500"
-                      >
-                        <FaExternalLinkAlt />
-                        Demo
-                      </a>
-                    )}
-
-                    {selectedProject.githubUrl && (
-                      <a
-                        href={selectedProject.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 text-gray-800 text-sm font-medium hover:bg-gray-200 transition dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
-                      >
-                        <FaGithub />
-                        Repositorio
-                      </a>
-                    )}
-                  </div>
-                )}
-              </aside>
+            <div className="p-4 sm:p-5">
+              <ImageViewer
+                images={project.images}
+                variant="preview"
+                onImageClick={() => setSelectedProject(project)}
+              />
             </div>
           </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+    {selectedProject && (
+  <div
+    onClick={() => setSelectedProject(null)}
+    className="fixed inset-0 z-[100] flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-6"
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-5 shadow-2xl dark:bg-slate-950 sm:max-w-5xl sm:rounded-3xl sm:p-8"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <span className="text-sm font-semibold text-blue-600">
+            {selectedProject.date}
+          </span>
+
+          <h3 className="mt-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+            {selectedProject.title}
+          </h3>
         </div>
-      )}
-    </section>
+
+        <button
+          onClick={() => setSelectedProject(null)}
+          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 transition hover:bg-gray-200 dark:bg-slate-800 dark:text-white"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
+          <ImageViewer
+            images={selectedProject.images}
+            variant="detail"
+            enableZoom
+          />
+        </div>
+
+        <div className="space-y-6 text-sm leading-7 text-gray-600 dark:text-gray-300 sm:text-base">
+          <div>
+            <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+              Descripción
+            </h4>
+            <p className="mt-2">
+              {selectedProject.longDescription || selectedProject.description}
+            </p>
+          </div>
+
+          {selectedProject.problem && (
+            <div>
+              <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                Problema
+              </h4>
+              <p className="mt-2">{selectedProject.problem}</p>
+            </div>
+          )}
+
+          {selectedProject.solution && (
+            <div>
+              <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                Solución
+              </h4>
+              <p className="mt-2">{selectedProject.solution}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
   );
 }
