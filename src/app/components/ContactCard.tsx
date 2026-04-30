@@ -5,9 +5,9 @@ import { Linkedin, Github, Mail } from "lucide-react";
 
 export default function ContactCard() {
   return (
-    <section className="flex justify-center items-center py-16 px-6 bg-gradient-to-b from-white to-gray-100 transition-colors duration-300 dark:from-slate-950 dark:to-slate-900">
+    <section className="flex justify-center items-center py-12 px-4 sm:py-16 sm:px-6 bg-gradient-to-b from-white to-gray-100 transition-colors duration-300 dark:from-slate-950 dark:to-slate-900">
       <motion.div
-        className="bg-white rounded-3xl shadow-2xl p-10 max-w-md w-full text-center border border-gray-200 transition-colors duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
+        className="bg-white rounded-3xl shadow-2xl p-5 sm:p-8 md:p-10 max-w-md w-full text-center border border-gray-200 transition-colors duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-slate-950"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

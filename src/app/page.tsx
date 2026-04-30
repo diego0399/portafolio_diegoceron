@@ -19,11 +19,10 @@ export default function Home() {
         {activeSection === "hero" && (
           <motion.section
             key="hero"
-            id="inicio"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.6 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
             className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
             <Hero />
@@ -33,12 +32,11 @@ export default function Home() {
         {activeSection === "skills" && (
           <motion.section
             key="skills"
-            id="skills"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="py-20 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
+            transition={{ duration: 0.5 }}
+            className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
             <Skills />
           </motion.section>
@@ -47,12 +45,11 @@ export default function Home() {
         {activeSection === "projects" && (
           <motion.section
             key="projects"
-            id="projects"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="py-20 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
+            transition={{ duration: 0.5 }}
+            className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
             <Projects />
           </motion.section>
@@ -61,12 +58,11 @@ export default function Home() {
         {activeSection === "contact" && (
           <motion.section
             key="contact"
-            id="contact"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="py-20 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
+            transition={{ duration: 0.5 }}
+            className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
             <ContactCard />
           </motion.section>

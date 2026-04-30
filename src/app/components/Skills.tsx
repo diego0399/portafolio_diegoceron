@@ -158,7 +158,7 @@ export default function Skills() {
   ];
 
   const SkillGroup = ({ title, description, skills }: SkillGroupProps) => (
-    <div className="mb-16">
+    <div className="mb-12 md:mb-16">
       <div className="mb-7 text-left">
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
           {title}
@@ -173,48 +173,76 @@ export default function Skills() {
             key={skill.name}
             className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-blue-200 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-blue-500/40"
           >
-            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-  <div className="flex items-start gap-4">
-    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gray-100 dark:bg-slate-800">
-      {skill.icon}
-    </div>
+            <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 dark:bg-slate-800">
+              {skill.icon}
+            </div>
 
-    <div>
-      <h4 className="text-base font-bold text-gray-900 dark:text-white">
-        {skill.name}
-      </h4>
-      <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
-        {skill.description}
-      </p>
-    </div>
-  </div>
-</div>
+            <div className="text-left">
+              <h4 className="text-base font-bold text-gray-900 dark:text-white">
+                {skill.name}
+              </h4>
+
+              <p className="mt-1 text-sm text-gray-600 leading-relaxed dark:text-gray-300">
+                {skill.description}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
     </div>
   );
 
   return (
+    <section
+      id="skills"
+      className="py-12 px-4 sm:py-16 md:py-20 md:px-6 bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12 md:mb-14">
+          <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest dark:text-blue-400">
+            Tecnologías
+          </span>
 
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mt-3 dark:text-white">
+            Habilidades
+          </h2>
 
-    <section className="px-4 pt-28 pb-16 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-6xl">
-    <div className="text-center">
-      <span className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-        Tecnologías
-      </span>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed dark:text-gray-300">
+            Tecnologías que he utilizado en proyectos web, aplicaciones móviles,
+            APIs, bases de datos y soluciones orientadas a la lógica de negocio.
+          </p>
+        </div>
 
-      <h2 className="mt-3 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-        Habilidades
-      </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-12 md:mb-16">
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              8+
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Tecnologías backend
+            </p>
+          </div>
 
-      <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-        Tecnologías que he utilizado en proyectos web, aplicaciones móviles, APIs, bases de datos y soluciones orientadas a la lógica de negocio.
-      </p>
-    </div>
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              9+
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Tecnologías frontend y móvil
+            </p>
+          </div>
 
-    <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-       <SkillGroup
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm dark:bg-slate-900 dark:border-slate-800 sm:col-span-2 md:col-span-1">
+            <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              4
+            </p>
+            <p className="mt-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+              Bases de datos utilizadas
+            </p>
+          </div>
+        </div>
+
+        <SkillGroup
           title="Back-end y APIs"
           description="Tecnologías utilizadas para crear lógica de negocio, servicios, persistencia de datos y comunicación entre sistemas."
           skills={backendSkills}
@@ -231,8 +259,7 @@ export default function Skills() {
           description="Motores y servicios de almacenamiento usados en proyectos web y móviles."
           skills={databaseSkills}
         />
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
   );
 }

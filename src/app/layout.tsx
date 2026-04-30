@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "Portafolio - Diego Cerón",
   description:
-    "Desarrollador full-stack con experiencia en React Native y FastAPI",
+    "Portafolio profesional de Diego Cerón, desarrollador back end junior con experiencia en Java, Spring Boot, PHP, APIs, bases de datos y aplicaciones web.",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body>{children}</body>
     </html>
   );

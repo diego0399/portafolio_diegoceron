@@ -73,12 +73,12 @@ export default function ImageViewer({
     <>
       <div className="w-full">
         {title && (
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="text-lg md:text-xl font-bold text-gray-900">
+          <div className="flex items-center justify-between mb-4 gap-4">
+            <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
               {title}
             </h4>
 
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               {currentIndex + 1} / {images.length}
             </span>
           </div>
@@ -87,8 +87,8 @@ export default function ImageViewer({
         <div
           className={`relative w-full ${
             isDetail
-              ? "h-[360px] sm:h-[520px] lg:h-[680px]"
-              : "h-[300px] sm:h-[400px] lg:h-[520px]"
+              ? "h-[260px] sm:h-[420px] lg:h-[680px]"
+              : "h-[220px] sm:h-[340px] lg:h-[520px]"
           } bg-gray-950 rounded-2xl overflow-hidden border border-gray-200 shadow-lg cursor-zoom-in`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -118,7 +118,7 @@ export default function ImageViewer({
                   e.stopPropagation();
                   prevImage();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-11 h-11 rounded-full hover:bg-white transition text-2xl flex items-center justify-center shadow-lg"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-9 h-9 sm:w-11 sm:h-11 rounded-full hover:bg-white transition text-xl sm:text-2xl flex items-center justify-center shadow-lg"
               >
                 ‹
               </button>
@@ -129,7 +129,7 @@ export default function ImageViewer({
                   e.stopPropagation();
                   nextImage();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-11 h-11 rounded-full hover:bg-white transition text-2xl flex items-center justify-center shadow-lg"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-9 h-9 sm:w-11 sm:h-11 rounded-full hover:bg-white transition text-xl sm:text-2xl flex items-center justify-center shadow-lg"
               >
                 ›
               </button>
@@ -138,7 +138,7 @@ export default function ImageViewer({
         </div>
 
         {!title && (
-          <p className="text-center text-sm text-gray-500 mt-3">
+          <p className="text-center text-sm text-gray-500 mt-3 dark:text-gray-400">
             {currentIndex + 1} / {images.length}
           </p>
         )}
@@ -150,7 +150,7 @@ export default function ImageViewer({
                 type="button"
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`relative h-20 rounded-xl overflow-hidden border-2 transition bg-gray-950 ${
+                className={`relative h-16 sm:h-20 rounded-xl overflow-hidden border-2 transition bg-gray-950 ${
                   currentIndex === index
                     ? "border-blue-600"
                     : "border-transparent opacity-70 hover:opacity-100"
@@ -170,11 +170,11 @@ export default function ImageViewer({
 
       {isZoomOpen && (
         <div
-          className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-3 sm:p-4"
           onClick={() => setIsZoomOpen(false)}
         >
           <div
-            className="relative w-full max-w-[1500px] h-[90vh]"
+            className="relative w-full max-w-[1500px] h-[85vh] sm:h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -188,7 +188,7 @@ export default function ImageViewer({
             <button
               type="button"
               onClick={() => setIsZoomOpen(false)}
-              className="absolute top-4 right-4 bg-white text-gray-900 px-5 py-2 rounded-xl font-semibold hover:bg-gray-200 transition"
+              className="absolute top-4 right-4 bg-white text-gray-900 px-4 sm:px-5 py-2 rounded-xl font-semibold hover:bg-gray-200 transition"
             >
               Cerrar
             </button>
@@ -198,7 +198,7 @@ export default function ImageViewer({
                 <button
                   type="button"
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-12 h-12 rounded-full hover:bg-white transition text-3xl flex items-center justify-center shadow-lg"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-white transition text-2xl sm:text-3xl flex items-center justify-center shadow-lg"
                 >
                   ‹
                 </button>
@@ -206,7 +206,7 @@ export default function ImageViewer({
                 <button
                   type="button"
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-12 h-12 rounded-full hover:bg-white transition text-3xl flex items-center justify-center shadow-lg"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-900 w-10 h-10 sm:w-12 sm:h-12 rounded-full hover:bg-white transition text-2xl sm:text-3xl flex items-center justify-center shadow-lg"
                 >
                   ›
                 </button>
