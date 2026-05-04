@@ -3,7 +3,26 @@
 import { motion } from "framer-motion";
 import { Linkedin, Github, Mail } from "lucide-react";
 
-export default function ContactCard() {
+import type { Language } from "./translations";
+
+type ContactCardProps = {
+  language: Language;
+};
+
+const contactText = {
+  es: {
+    title: "Contacto",
+    description: "Puede contactarme por cualquiera de estos medios",
+  },
+  en: {
+    title: "Contact",
+    description: "You can contact me through any of these channels",
+  },
+};
+
+export default function ContactCard({ language }: ContactCardProps) {
+  const text = contactText[language];
+
   return (
     <section className="flex justify-center items-center py-12 px-4 sm:py-16 sm:px-6 bg-gradient-to-b from-white to-gray-100 transition-colors duration-300 dark:from-slate-950 dark:to-slate-900">
       <motion.div
@@ -14,11 +33,11 @@ export default function ContactCard() {
         whileHover={{ scale: 1.02 }}
       >
         <h3 className="text-2xl font-bold text-gray-900 mb-2 dark:text-white">
-          Contacto
+          {text.title}
         </h3>
 
         <p className="text-gray-500 mb-6 text-sm dark:text-gray-400">
-          Puede contactarme por cualquiera de estos medios
+          {text.description}
         </p>
 
         <div className="space-y-4 text-left">

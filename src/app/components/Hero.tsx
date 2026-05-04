@@ -5,15 +5,21 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function Hero() {
+import { translations, type Language } from "./translations";
+
+type HeroProps = {
+  language: Language;
+};
+
+export default function Hero({ language }: HeroProps) {
   const [showAbout, setShowAbout] = useState(false);
 
+  const t = translations[language];
+
   const whatsappNumber = "50368625907";
-  const whatsappMessage =
-    "Hola Diego, vi tu portafolio y me gustaría contactarte.";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    whatsappMessage,
+    t.hero.whatsappMessage,
   )}`;
 
   return (
@@ -98,7 +104,7 @@ export default function Hero() {
         </motion.div>
 
         <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300">
-          Disponible para nuevas oportunidades
+          {t.hero.availability}
         </span>
 
         <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-gray-900 mb-2 tracking-tight dark:text-white">
@@ -106,13 +112,11 @@ export default function Hero() {
         </h1>
 
         <h2 className="text-base md:text-lg text-blue-600 font-semibold dark:text-blue-400">
-          Desarrollador Junior Back End
+          {t.hero.role}
         </h2>
 
         <p className="mt-5 text-gray-600 leading-relaxed max-w-2xl mx-auto dark:text-gray-300">
-          Desarrollador Back End con formación en Ingeniería de Sistemas,
-          enfocado en la creación de sistemas web, APIs, bases de datos y
-          soluciones orientadas a la lógica de negocio.
+          {t.hero.description}
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -122,7 +126,7 @@ export default function Hero() {
             aria-expanded={showAbout}
             className="w-full sm:w-auto px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-500 dark:hover:text-white"
           >
-            {showAbout ? "Ver menos" : "Sobre mí"}
+            {showAbout ? t.hero.seeLessButton : t.hero.aboutButton}
           </button>
 
           <a
@@ -132,7 +136,7 @@ export default function Hero() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg"
           >
             <FaWhatsapp className="text-xl" />
-            Contactar por WhatsApp
+            {t.hero.whatsappButton}
           </a>
         </div>
 
@@ -144,27 +148,20 @@ export default function Hero() {
             transition={{ duration: 0.4 }}
           >
             <h3 className="text-xl font-bold text-gray-900 mb-3 dark:text-white">
-              Sobre mí
+              {t.hero.aboutTitle}
             </h3>
 
             <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-              Soy Desarrollador Back End autodidacta e Ingeniero en Sistemas
-              graduado de la Universidad Tecnológica de El Salvador. Me interesa
-              seguir creciendo profesionalmente en el desarrollo de sistemas,
-              trabajando con tecnologías como Java, Spring Boot, PHP, SQL
-              Server, MySQL y Oracle.
+              {t.hero.aboutText}
             </p>
 
             <div className="mt-6 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm dark:bg-slate-900 dark:border-slate-700">
               <h4 className="text-lg font-bold text-gray-900 mb-2 dark:text-white">
-                Atención y soporte
+                {t.hero.supportTitle}
               </h4>
 
               <p className="text-gray-600 leading-relaxed dark:text-gray-300">
-                Estoy atento a cualquier consulta, problema o necesidad
-                relacionada con sistemas web, bases de datos, desarrollo Back
-                End o mejoras en proyectos existentes. Puedes contactarme y con
-                gusto revisaré cómo puedo ayudarte.
+                {t.hero.supportText}
               </p>
             </div>
           </motion.div>

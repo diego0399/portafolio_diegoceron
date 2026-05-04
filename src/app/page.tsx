@@ -1,19 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import ContactCard from "./components/ContactCard";
 
+import type { Language } from "./components/translations";
+
+const LANGUAGE_STORAGE_KEY = "portfolio-language";
+
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("projects");
+  const [language, setLanguage] = useState<Language>("en");
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+    if (savedLanguage === "es" || savedLanguage === "en") {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  const toggleLanguage = () => {
+    setLanguage((currentLanguage) => {
+      const newLanguage = currentLanguage === "es" ? "en" : "es";
+
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, newLanguage);
+
+      return newLanguage;
+    });
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100">
-      <Navbar onShowSections={setActiveSection} />
+      <Navbar
+        language={language}
+        onToggleLanguage={toggleLanguage}
+        onShowSections={setActiveSection}
+      />
 
       <AnimatePresence mode="wait">
         {activeSection === "hero" && (
@@ -25,7 +53,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
-            <Hero />
+            <Hero language={language} />
           </motion.section>
         )}
 
@@ -38,7 +66,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
-            <Skills />
+            <Skills language={language} />
           </motion.section>
         )}
 
@@ -51,7 +79,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
-            <Projects />
+            <Projects language={language} />
           </motion.section>
         )}
 
@@ -64,7 +92,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="bg-gray-50 transition-colors duration-300 dark:bg-slate-950"
           >
-            <ContactCard />
+            <ContactCard language={language} />
           </motion.section>
         )}
       </AnimatePresence>

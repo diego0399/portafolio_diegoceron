@@ -1,59 +1,57 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { Moon, Sun } from "lucide-react";
 
-export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+import { translations, type Language } from "./translations";
+
+type ThemeToggleProps = {
+  language: Language;
+};
+
+type Theme = "light" | "dark";
+
+const THEME_STORAGE_KEY = "portfolio-theme";
+
+export default function ThemeToggle({ language }: ThemeToggleProps) {
+  const [theme, setTheme] = useState<Theme>("light");
+
+  const t = translations[language].theme;
+  const isDark = theme === "dark";
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setIsDark(false);
-    }
+    const initialTheme: Theme =
+      savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light";
 
-    setMounted(true);
+    setTheme(initialTheme);
+
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = !isDark;
+    setTheme((currentTheme) => {
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-    setIsDark(newTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
 
-    if (newTheme) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+      return newTheme;
+    });
   };
-
-  if (!mounted) return null;
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition hover:scale-105 hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-100 dark:hover:bg-slate-800"
+      aria-label={isDark ? t.switchToLight : t.switchToDark}
+      title={isDark ? t.switchToLight : t.switchToDark}
+      className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-slate-700 dark:text-gray-100 dark:hover:bg-slate-800"
     >
-      {isDark ? (
-        <>
-          <FaSun className="text-yellow-400" />
-          Claro
-        </>
-      ) : (
-        <>
-          <FaMoon className="text-blue-600" />
-          Oscuro
-        </>
-      )}
+      {isDark ? <Sun size={18} /> : <Moon size={18} />}
+
+      <span>{isDark ? t.light : t.dark}</span>
     </button>
   );
 }
